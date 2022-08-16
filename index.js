@@ -1,29 +1,30 @@
-// Write the function camelize(str) that changes dash-separated words like “my-short-string” into camel-cased “myShortString”.
-//1
+//#1
 function camelize(str) {
- //write your code here
+  return str
+    .split("-")
+    .map((el, i) => {
+      return i === 0 ? el.toLowerCase() : el[0].toUpperCase() + el.slice(1);
+    })
+    .join("");
 }
 
-console.log(camelize("background-color"))
-console.log(camelize("list-style-image"))
-console.log(camelize("-webkit-transition"))
+console.log(camelize("background-color"));
+console.log(camelize("list-style-image"));
+console.log(camelize("-webkit-transition"));
 
-//Write the code to create another array from it, of objects with id and fullName, where fullName is generated from name and surname.
-//2
+//#2
 
-let john = { name: "John", surname: "Smith", id: 1 };
-let pete = { name: "Pete", surname: "Hunt", id: 2 };
-let mary = { name: "Mary", surname: "Key", id: 3 };
+const userArr = [
+  { name: "John", surname: "Smith", id: 1 },
+  { name: "Pete", surname: "Hunt", id: 2 },
+  { name: "Mary", surname: "Key", id: 3 },
+];
 
-let users = [john, pete, mary];
+const usersMapped = userArr.map((el) => {
+  return { fullName: el.name + " " + el.surname, id: el.id };
+});
 
-//write your code here
+console.log(usersMapped);
 
-/*   usersMapped = [
-    { fullName: "John Smith", id: 1 },
-    { fullName: "Pete Hunt", id: 2 },
-    { fullName: "Mary Key", id: 3 }
-  ] */
-
-console.log(usersMapped[0].id); // 1
-console.log(usersMapped[0].fullName); // John Smith
+console.log(usersMapped[0].id);
+console.log(usersMapped[0].fullName);
